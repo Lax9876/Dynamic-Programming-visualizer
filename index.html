@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DP Grid Visualizer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h1>DP Grid Visualizer</h1>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color start"></div>
+          <span>Start</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color current"></div>
+          <span>Current</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color visited"></div>
+          <span>Visited</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color processing"></div>
+          <span>Processing</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color end"></div>
+          <span>End</span>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <label>Rows:</label><input type="number" id="rows" value="3" min="1" max="10">
+        <label>Cols:</label><input type="number" id="cols" value="3" min="1" max="10">
+        <select id="problem">
+          <option value="uniquePaths">Unique Paths</option>
+          <option value="minimumPathSum">Minimum Path Sum</option>
+          <option value="max_path_sum">Max Path Sum</option>
+          <option value="coin_change">Coin Change</option>
+        </select>
+        <button id="startBtn">Start Visualization</button>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="controls">
+        <button id="playBtn">Play</button>
+        <button id="pauseBtn">Pause</button> <!-- ✅ Added -->
+        <button id="stepBtn">Step</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+      <div class="info-panel" id="infoPanel"></div>
+    </div>
+    <div class="right-panel">
+      <h2>Code View</h2>
+      <pre class="code-view"><code class="language-cpp" id="codeDisplay"></code></pre>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html> 
+
