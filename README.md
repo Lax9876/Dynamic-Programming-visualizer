@@ -49,3 +49,12 @@ The **DP Visualizer** is a web application that allows users to explore dynamic 
    ```bash
    git clone https://github.com/Lax9876/dp-visualizer.git
    cd dp-visualizer
+---
+##🖥️ Usage
+-Choose an algorithm from the dropdown (e.g., Unique Paths).
+-Use control buttons to:
+  ▶️ Play
+  ⏸ Pause
+  ⏭ Step
+  🔄 Reset
+-Watch the DP table fill as the algorithm runs.
