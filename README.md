@@ -51,10 +51,12 @@ The **DP Visualizer** is a web application that allows users to explore dynamic 
    cd dp-visualizer
 ---
 ##🖥️ Usage
--Choose an algorithm from the dropdown (e.g., Unique Paths).
--Use control buttons to:
-  ▶️ Play
-  ⏸ Pause
-  ⏭ Step
-  🔄 Reset
+
+- Choose an algorithm from the dropdown (e.g., Unique Paths).
+- Use control buttons to:
+  - ▶️ Play
+  - ⏸ Pause
+  - ⏭ Step
+  - 🔄 Reset
 -Watch the DP table fill as the algorithm runs.
+---
