@@ -3,10 +3,11 @@ import {
   playVisualizer,
   pauseVisualizer,
   stepVisualizer,
-  resetVisualizer
+  resetVisualizer,
+  highlightCode,
+  highlightCodeLine
 } from "./visualizer.js";
-
-
+window.highlightCodeLine = highlightCodeLine;
 import { uniquePathsDP } from "./problems/uniquePaths.js";
 import { minimumPathSumDP } from "./problems/minimumPathSum.js";
 import { maxPathSumDP } from "./problems/max_path_sum.js";
@@ -108,6 +109,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const problemSelect = document.getElementById("problem");
   const infoPanel    = document.getElementById("infoPanel"); 
   document.getElementById("startBtn").addEventListener("click", () => {
+  document.getElementById("inputGridPanel").innerHTML = "";
+  document.getElementById("infoPanel").innerHTML = "";
     
     const m = parseInt(rowsInput.value);
     const n = parseInt(colsInput.value);
@@ -120,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (problemSelect.value === "uniquePaths") {
       result = uniquePathsDP(m, n);
       code   = getUniquePathsCode();
-
+      highlightCode(code, "cpp");
     } else if (problemSelect.value === "minimumPathSum") {
       // random grid for min path sum
       grid = Array.from({ length: m }, () =>
@@ -128,8 +131,12 @@ window.addEventListener("DOMContentLoaded", () => {
       );
       result = minimumPathSumDP(grid);
       code   = getMinimumPathSumCode();
+      highlightCode(code, "cpp");
+      document.getElementById("inputGridPanel").innerHTML = `
+      <h3>Input Grid:</h3>
+      ${formatGrid(grid)}
+    `;
 
-      infoPanel.innerHTML = `<h3>Input Grid:</h3>` + formatGrid(grid);
 
     } else if (problemSelect.value === "max_path_sum") {
       // random grid for max path sum
@@ -138,8 +145,12 @@ window.addEventListener("DOMContentLoaded", () => {
       );
       result = maxPathSumDP(grid);
       code   = getMaxPathSumCode();
+      highlightCode(code, "cpp");
+      document.getElementById("inputGridPanel").innerHTML = `
+      <h3>Input Grid:</h3>
+      ${formatGrid(grid)}
+    `;
 
-      infoPanel.innerHTML = `<h3>Input Grid:</h3>` + formatGrid(grid);
 
     } else if (problemSelect.value === "coin_change") {
         // 1. Define coins & amount
@@ -151,7 +162,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // 3. Prepare the code preview
         code = getCoinChangeCode();
-
+        highlightCode(code, "cpp");
         // 4. Show input info
         infoPanel.innerHTML = `
           <p><strong>Coins:</strong> [${coins.join(", ")}]</p>
@@ -168,7 +179,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
 
         // 6. Start playback immediately
-        playVisualizer(300);
+        playVisualizer(2000);
 
         // 7. Return early so you don’t re-init below
         return;
@@ -181,13 +192,13 @@ window.addEventListener("DOMContentLoaded", () => {
         gridSize: { m, n },
         code
       });
-      playVisualizer(300);
+      playVisualizer(2000);
     }
   });
 
 
   document.getElementById("playBtn").addEventListener("click", () => {
-    playVisualizer(300);
+    playVisualizer(2000);
   });
 
   document.getElementById("pauseBtn").addEventListener("click", () => {
